@@ -1,2 +1,5 @@
 # caixa
-caixa [ˈka(j).ʃɐ] - magic box o' Python tools
+`caixa` [ˈka(j).ʃɐ] - magic box o' Python tools
+
+A monopackage for generic functions, classes and decorators I used a lot in development projects.  My personal standard library, as it were.  The name `caixa` means "box" in Portuguese, and has the same Latin root (*capio*) as English words like "capture", "cash", "chase", "cassette", etc.  
+
