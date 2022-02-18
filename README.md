@@ -6,7 +6,7 @@ A monopackage for generic functions, classes and decorators I use occasionally (
 
 ## Inventory
 
-* `caixa.options` - Helper functins for painless option parsing 
+* `caixa.options` - Painless options management 
 * `caixa.xdir.XDir` - An object representing a filesystem directory 
 * `caixa.enum.StrEnum` - A `str`-based enum class like `enum.IntEnum`
 * `caixa.decorators.timed` - a simple timing decorator
