@@ -1,47 +1,9 @@
+import re
 import argparse
 from copy import deepcopy
 from gettext import gettext
 from dataclasses import dataclass
-from typing import List, Tuple, Optional
-
-"""
-Helper functions (and a helper class) for argument parsing.
-"""
-
-def kwindex(argv: List[str]) -> Optional[int]:
-    """Returns the array position of the first keyword-like argument (that is, the
-    first argument that starts with a dash) if found, else None."""
-    i = 0
-    while i < len(argv) and not argv[i].startswith('-'):
-        i += 1
-    return i if i < len(argv) else None
-
-def splitargv(argv: List[str]) -> Tuple[List[str],List[str]]:
-    """Splits an argument vector into positional and keyword arguments."""
-    i = kwindex(argv)
-    if i is None:
-        (posargs, kwargs) = (argv[:], [])
-    else:
-        (posargs, kwargs) = (argv[:i], argv[i:])
-    return (posargs, kwargs)
-
-def first_nonkwarg(argv: List[str]) -> Optional[str]: 
-    """Given a list of strings :argv, returns the first element (if it is a non-kwarg), else None"""
-    if len(argv) > 0:
-        if not argv[0].startswith('-'):
-            return argv[0]
-    return None
-
-@dataclass
-class ArgMap:
-    pos: List[str]
-    kw: List[str]
-
-    @classmethod
-    def ingest(cls, argv: List[str]) -> 'ArgMap':
-        (posargs, kwargs) = splitargv(argv)
-        return ArgMap(posargs, kwargs)
-
+from typing import List, Tuple, Dict, Optional, Any
 
 
 class ArgumentParser(argparse.ArgumentParser):
