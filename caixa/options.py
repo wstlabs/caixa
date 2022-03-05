@@ -1,5 +1,5 @@
 """
-Dead simple options management.
+Helper functins for painless option parsing.
 
 The key to keeping "options" management simple lies in recognizing that differs (crucially) from "configuration" management:
     
