@@ -5,6 +5,8 @@ from gettext import gettext
 from dataclasses import dataclass
 from typing import List, Tuple, Dict, Optional, Any
 
+class Namespace(argparse.Namespace):
+    pass
 
 class ArgumentParser(argparse.ArgumentParser):
     """A monkey-patched version of argparse.ArgumentParser that overrides the default 

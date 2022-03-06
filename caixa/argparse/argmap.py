@@ -48,14 +48,22 @@ It now splits at position 4.
 
 @dataclass
 class ArgMap:
+    """A simple container object for the output of ArgSpec.resolve(), representing the finished parse state."""
     argv: List[str]
     index: int 
     failmsg: Optional[str]
 
-    @classmethod
-    def ingest(cls, argv: List[str]) -> 'ArgMap':
-        _argv: List[str] = deepcopy(argv)
-        return ArgMap(argv=_argv)
+    def segment(self, position: int) -> List[str]:
+        """Assuming that this instance represents a successful parse state, returns the first or second of derived segments, 
+        depending on whether the given :position has the value 0 or 1, respectively.  If the instance represents a failed
+        parse state (taht is failmsg is None or index < 0), or and invalid :position is passed, an exception is raised."""
+        if self.failmsg:
+            raise RuntimeError("invalid usage - cannot provide segements because argument sequence did not parse")
+        if position == 0: 
+            return self.argv[:self.index]
+        if position == 1: 
+            return self.argv[self.index:]
+        raise ValueError("invalid usage - position must be 0 or 1") 
 
 
 class ArgSpec:
@@ -83,19 +91,19 @@ class ArgSpec:
     def resolve(self, argv: List[str]) -> ArgMap: 
         _argv = deepcopy(argv)
         index: int = 0
-        print(f"resolve: argv = {_argv}")
+        # print(f"resolve: argv = {_argv}")
         while index < len(_argv):
             term = _argv[index]
-            print(f"term[{index}] = '{term}' ..")
+            # print(f"term[{index}] = '{term}' ..")
             if not term.startswith('-'):
                 return ArgMap(_argv, index, None) 
             kwspec = KwargSpec.ingest(term)
-            print(f"term[{index}] = '{term}' : {kwspec}")
+            # print(f"term[{index}] = '{term}' : {kwspec}")
             if not kwspec.status:
                 return ArgMap(_argv, -1, f"malformed term '{term}' at position {index}")
             # If the status check passes, we're guarnteed to have at least a keyword term
             _valence = self.valence(kwspec.keyword)
-            print(f"term[{index}] = '{term}' : keyword = '{kwspec.keyword}', _valence = {_valence}")
+            # print(f"term[{index}] = '{term}' : keyword = '{kwspec.keyword}', _valence = {_valence}")
             if _valence is None:
                 return ArgMap(_argv, -1, f"unrecognized term '{term}' at position {index}")
             if _valence == 0: 
@@ -155,7 +163,6 @@ def parse_kwarg_term(term: str) -> KwargSpec:
     index: int = find_not(term, '-')
     if index < 1:
         return KwargSpec(keyword=None, value=None, failmsg="not dashy") 
-    # residue = term[index:]
     index = term.find('=')
     if index < 0:
         return KwargSpec(keyword=term, value=None, failmsg=None)
