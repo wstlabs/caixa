@@ -210,6 +210,10 @@ class XDir:
             return ioany.slurp_csv(path)
         raise ValueError(f"can't find CSV file at path = '{path}'")
 
+    def save_lines(self, subpath: str, lines: List[str], encoding: str = 'utf-8'):
+        path = self.fullpath(subpath)
+        return ioany.save_lines(path, lines, encoding)
+
     #
     # Pickling
     #
