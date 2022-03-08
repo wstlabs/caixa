@@ -214,6 +214,10 @@ class XDir:
         path = self.fullpath(subpath)
         return ioany.save_lines(path, lines, encoding)
 
+    def load_lines(self, subpath: str, encoding: str = 'utf-8') -> List[str]:
+        path = self.fullpath(subpath)
+        return ioany.load_lines(path, encoding)
+
     #
     # Pickling
     #
