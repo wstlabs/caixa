@@ -1,9 +1,7 @@
-import re
 import argparse
 from copy import deepcopy
 from gettext import gettext
-from dataclasses import dataclass
-from typing import List, Tuple, Dict, Optional, Any
+from typing import Optional
 
 class Namespace(argparse.Namespace):
     pass
