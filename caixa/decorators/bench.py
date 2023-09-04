@@ -103,37 +103,3 @@ def timed(bare: bool = False) -> Callable:
     else:
         return timed_with_return
 
-
-
-
-
-
-
-
-
-
-def __timed(bare: bool = False) -> Callable:
-    """
-    print(f"bare={bare}, type={type(bare)}")
-    if bare:
-        def timed_without_return(func: Callable) -> Callable:
-            @wraps(func)
-            def wrapper(*args, **kwreturn) -> float: 
-                t0 = time.time()
-                func(*args, **kwreturn)
-                delta = time.time() - t0
-                return delta
-            return wrapper
-        return timed_without_return
-    else:
-        def timed_with_return(func: Callable) -> Callable:
-            @wraps(func)
-            def wrapper(*args, **kwreturn) -> Tuple[float,Any]: 
-                t0 = time.time()
-                x = func(*args, **kwreturn)
-                delta = time.time() - t0
-                return (delta, x)
-            return wrapper
-        return timed_with_return
-"""
-

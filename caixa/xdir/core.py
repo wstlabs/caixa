@@ -253,4 +253,3 @@ class XDir:
         for item in items:
             yield self.load_pickle(item.subpath)
 
-

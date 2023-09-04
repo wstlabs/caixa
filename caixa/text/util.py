@@ -182,4 +182,3 @@ def find_line_occurrence(text: str, position: int, separator: str = "\n") -> Opt
     j1 = find_occurrence(text, separator, position-1)
     return (j0, j1)
 
-

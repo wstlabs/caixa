@@ -10,4 +10,3 @@ def enum2str(item: Union[Enum, str]) -> str:
         return item
     raise TypeError(f"invalid item instance - can't deal with type = {type(item)}")
 
-

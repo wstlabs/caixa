@@ -137,13 +137,3 @@ class StrEnum(type):
     def __iter__(self):
          return _enumerate(self)
 
-
-"""
-BUGS:
-
-The '__module__' member in our created class objects needs to get the value of the __name__ property 
-in the calling context, as opposed to its own context (that is, from this module we are in right now). 
-This currently bubbles up in exception traces from within the object, e.g.:
-    ValueError: 'x' is not a valid instance of <class 'caixa.enum.strenum.Foo'>
-"""
-

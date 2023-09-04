@@ -24,4 +24,3 @@ class Flyweight(type):
             instance = REG[cls][pk] = type.__call__(cls, *args, **kwargs)
         return instance
 
-
