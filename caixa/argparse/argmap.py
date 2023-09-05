@@ -63,7 +63,7 @@ class ArgMap:
 
 class ArgSpec:
 
-    def __init__(self, rawspec: dict[str, Optional[str]]) -> None: 
+    def __init__(self, rawspec: dict[str, str]) -> None: 
         assert_valid_rawspec(rawspec)
         self._raw = deepcopy(rawspec)
         self._val = rawspec2valence(self._raw)

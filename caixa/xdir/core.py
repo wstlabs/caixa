@@ -196,16 +196,16 @@ class XDir:
         Loads the struct at 'subpath', infers filetype (yaml, json) from path extension.
         """
         path = self.fullpath(subpath)
-        return ioany.load_path(path)
+        return ioany.load_any(path)
 
     def save_recs(self, subpath: str, stream: Iterator[dict]):
         path = self.fullpath(subpath)
-        return ioany.save_recs(path, stream)
+        return ioany.save_csv(path, stream)
 
     def slurp_csv(self, subpath: str) -> list[dict]:
         path = self.fullpath(subpath)
         if self.exists(path):
-            return ioany.slurp_csv(path)
+            return list(ioany.read_csv(path).rows())
         raise ValueError(f"can't find CSV file at path = '{path}'")
 
     def save_lines(self, subpath: str, lines: list[str], encoding: str = 'utf-8'):

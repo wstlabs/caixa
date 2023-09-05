@@ -1,5 +1,5 @@
 import re
-from typing import Iterator, tuple, Callable, Optional
+from typing import Iterator, Callable, Optional
 from .patternbook import PatternBook
 
 """

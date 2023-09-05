@@ -1,5 +1,5 @@
 import re
-from typing import dict, Optional
+from typing import Optional
 
 
 class PatternBook: 

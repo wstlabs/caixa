@@ -3,7 +3,7 @@ from typing import Any
 from caixa.enum import StrEnum
 
 
-def dump(item: any, label: str = 'item'):
+def dump(item: Any, label: str = 'item'):
     print(f"{label} = {item}, type(item) = {type(item)}, id = {id(item)}")
     print(f'{label}.__class__ = ', item.__class__)
     print(f'{label}.__bases__ = ', item.__class__.__bases__)

@@ -1,4 +1,4 @@
-from caixa.argparse import ArgSpec 
+from caixa.argparse.argmap import ArgSpec 
 
 T = {}
 T['trivial-1'] = dict(cmd="", mono="", pair="", index=0)

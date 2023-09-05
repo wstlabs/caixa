@@ -1,7 +1,7 @@
 """
 Provides the factory class StrEnum, analogous to enum.IntEnum.
 See the docstring to the StrEnum class for details."""
-from typing import Iterator, Any
+from typing import Iterator, Optional, Any
 
 def dump(item: Any, label: str = 'item'):
     print(f"{label} = {item}, type(item) = {type(item)}, id = {id(item)}")
@@ -119,7 +119,7 @@ class StrEnum(type):
       That's because we allow arbitrary strings as elements (which in general are not 
       necessarily valid python identifiers, hence not permitted as attributes).
     - So as a result, elements are referenced only via the constructor."""
-    def __new__(mcls, name: str, tags: list[str], attrs: dict = None):
+    def __new__(mcls, name: str, tags: list[str], attrs: Optional[dict] = None):
         if name.startswith('None'):
             return None
         bases = (str,)
@@ -129,7 +129,7 @@ class StrEnum(type):
         _register(newcls, tags)
         return newcls
 
-    def __init__(self, name: str, bases: tuple = None, attrs: dict = None): 
+    def __init__(self, name: str, bases: Optional[tuple] = None, attrs: Optional[dict] = None): 
         pass
 
     def __iter__(self):
