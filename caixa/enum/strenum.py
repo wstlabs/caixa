@@ -90,7 +90,7 @@ ATTRS['value'] = strenum_value
 
 class StrEnum(type):
     """The factory class, class StrEnum, analogous to enum.IntEnum.
-     
+
     By "factory class" we mean (in our unofficial terminology) a class whose constructor 
     returns not an instance of its own class, but rather creates an entirely new class
     based on the given :name and list of :tags. 

@@ -126,7 +126,6 @@ def assert_valid_rawspec_label(label: str) -> None:
    if label not in ('mono', 'pair'):
        raise ValueError(f"invalid rawspec label '{label}'")
 
-
 def assert_valid_rawspec(rawspec: dict[str, str]) -> None:
     for k in rawspec.keys():
         assert_valid_rawspec_label(k)

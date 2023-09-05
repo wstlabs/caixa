@@ -3,7 +3,7 @@ from typing import dict, Optional
 
 
 class PatternBook: 
-   
+
     def __init__(self, lookup: dict[str, re.Pattern]):
         self.lookup = lookup
 

@@ -2,7 +2,7 @@
 Helper functins for painless option parsing.
 
 The key to keeping "options" management simple lies in recognizing that differs (crucially) from "configuration" management:
-    
+
   - By definition, option settings should always be -optional- (so we do not need to keep track of 
     which option keys are required or not - only whether they are permitted or not).
 
