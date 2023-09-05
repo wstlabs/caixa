@@ -1,7 +1,7 @@
 """
 Provides the factory class StrEnum, analogous to enum.IntEnum.
 See the docstring to the StrEnum class for details."""
-from typing import type, Iterator, Any
+from typing import Iterator, Any
 
 def dump(item: Any, label: str = 'item'):
     print(f"{label} = {item}, type(item) = {type(item)}, id = {id(item)}")
