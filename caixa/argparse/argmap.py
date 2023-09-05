@@ -63,7 +63,7 @@ class ArgMap:
 
 class ArgSpec:
 
-    def __init__(self, rawspec: dict[str,Optional[str]]) -> None: 
+    def __init__(self, rawspec: dict[str, Optional[str]]) -> None: 
         assert_valid_rawspec(rawspec)
         self._raw = deepcopy(rawspec)
         self._val = rawspec2valence(self._raw)
@@ -123,11 +123,11 @@ class ArgSpec:
 
 
 def assert_valid_rawspec_label(label: str) -> None:
-   if label not in ('mono','pair'):
+   if label not in ('mono', 'pair'):
        raise ValueError(f"invalid rawspec label '{label}'")
 
 
-def assert_valid_rawspec(rawspec: dict[str,str]) -> None:
+def assert_valid_rawspec(rawspec: dict[str, str]) -> None:
     for k in rawspec.keys():
         assert_valid_rawspec_label(k)
 
@@ -161,18 +161,18 @@ def parse_kwarg_term(term: str) -> KwargSpec:
     index = term.find('=')
     if index < 0:
         return KwargSpec(keyword=term, value=None, failmsg=None)
-    elif term.find('=',index+1) < 0:
+    elif term.find('=', index+1) < 0:
         return KwargSpec(keyword=term[:index], value=term[index+1:], failmsg=None)
     else:
         return KwargSpec(keyword=None, value=None, failmsg="too many equal signs") 
 
 
-def rawspec2valence(rawspec: dict[str,str]) -> dict[str,int]:
-    _val: dict[str,int] = {}
+def rawspec2valence(rawspec: dict[str, str]) -> dict[str, int]:
+    _val: dict[str, int] = {}
     label: str
     terms: str
-    for (label,terms) in rawspec.items():
-        if label not in ('mono','pair'):
+    for (label, terms) in rawspec.items():
+        if label not in ('mono', 'pair'):
             raise ValueError(f"invalid rawspec - bad label '{label}'")
         _valence: int = label2valence(label)
         _terms: list[str] = [t for t in terms.split(',') if len(t)]

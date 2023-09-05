@@ -39,7 +39,7 @@ def is_delim(string: str, separator: str) -> bool:
     but False for "foobar", "foo-", "-bar" as well as "foo--bar".  
     """
     assert_valid_separator(separator)
-    qsep = f"\\{separator}" if separator in ("\\",'-') else separator
+    qsep = f"\\{separator}" if separator in ("\\", '-') else separator
     pat = re.compile(f"^([^\s{qsep}]+{qsep})+([^\s{qsep}]+)$")
     return bool(pat.match(string))
 
@@ -120,7 +120,7 @@ def basic_shape(string: str) -> str:
     Looks at a string and tries to determine it's basic "shape" for downstream processing.
     As the function name implies these assignment names very basic, but workable enough (for now).
     """
-    if not isinstance(string,str):
+    if not isinstance(string, str):
         return None
     if len(string) == 0:
         return 'empty'
@@ -130,7 +130,7 @@ def basic_shape(string: str) -> str:
         return 'malformed'
     if ' ' in string:
         return 'multiword'
-    if is_delim(string,'-'):
+    if is_delim(string, '-'):
         return 'dashy'
     if '-' in string: # contains '--' or leading/trailing '-'
         return 'malformed'
@@ -160,7 +160,7 @@ def find_occurrence(string: str, sub: str, position: int, start: Optional[int] =
     # Theoretically we should never get here, but if we do ...
     raise RuntimeError("invalid state") 
 
-def find_line_occurrence(text: str, position: int, separator: str = "\n") -> Optional[tuple[int,int]]:
+def find_line_occurrence(text: str, position: int, separator: str = "\n") -> Optional[tuple[int, int]]:
     if position < 0:
         raise ValueError("invalid usage - position must be > 0") 
     if position == 0:

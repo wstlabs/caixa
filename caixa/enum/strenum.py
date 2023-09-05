@@ -19,11 +19,11 @@ appropriate elements in the classes dunder-dicts (which is sometimes called the 
 pattern").
 """
 
-REG: Dict[type,dict] = {}
+REG: dict[type, dict] = {}
 def _register(cls: type, tags: List[str]) -> None:
     if cls in REG:
         raise ValueError(f"invalid usage - StrEnum class '{cls}' already registered") 
-    REG[cls] = {'index':{}, 'memo':{}}
+    REG[cls] = {'index': {}, 'memo': {}}
     for (i, tag) in enumerate(tags):
         pos = i+1
         if not isinstance(tag, str):
@@ -83,7 +83,7 @@ def strenum_value(self) -> str:
 A ready-made dict of attributes for providing class instances.
 This ends up being copied and passed along in StrEnum.__new__ 
 """
-ATTRS: Dict[str,Any] = {}
+ATTRS: Dict[str, Any] = {}
 ATTRS['__new__'] = strenum_instance
 ATTRS['position'] = strenum_position
 ATTRS['value'] = strenum_value

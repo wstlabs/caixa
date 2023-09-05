@@ -60,7 +60,7 @@ def assert_valid_option_key(k: str) -> None:
     if len(k) == 0:
         raise ValueError(f"invalid option key '{k}' - cannot be the empty string") 
 
-def resolve_options(default_options: dict[str,Any], update_options: dict[str,Any]) -> dict[str,Any]:
+def resolve_options(default_options: dict[str, Any], update_options: dict[str, Any]) -> dict[str, Any]:
     """
     Returns a new options dict, with the :default_options and :update_options dicts safely merged.
     """

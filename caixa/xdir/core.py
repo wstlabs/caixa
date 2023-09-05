@@ -166,7 +166,7 @@ class XDir:
                 yield ItemAttr(offset, subpath)
 
     def item_path(self, label: str, ext: str, position: int) -> str:
-        if position not in range (0,1000000):
+        if position not in range (0, 1000000):
             raise ValueError(f"invalid position '{position}'")
         fmtpos = "%.6d" % position
         return f"{label}-{fmtpos}.{ext}"
@@ -222,12 +222,12 @@ class XDir:
 
     def load_pickle(self, subpath: str) -> Any:
         fullpath = self.fullpath(subpath)
-        with open(fullpath,"rb") as f:
+        with open(fullpath, "rb") as f:
             return pickle.load(f)
 
     def save_pickle(self, subpath: str, data: Any) -> None:
         fullpath = self.fullpath(subpath)
-        with open(fullpath,"wb") as f:
+        with open(fullpath, "wb") as f:
             pickle.dump(data, f)
 
     #
