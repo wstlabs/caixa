@@ -1,6 +1,6 @@
-from typing import Iterator, Any
+from typing import Iterator, Optional, Any
 
-def slice_dict(r: dict, keys: list[str], strict = True) -> dict: 
+def slice_dict(r: dict, keys: list[str], strict: Optional[bool] = True) -> dict: 
     d = {}
     for k in keys:
         if strict and k not in r:
@@ -8,7 +8,7 @@ def slice_dict(r: dict, keys: list[str], strict = True) -> dict:
         d[k] = r.get(k)
     return d
 
-def slice_recs(recs: Iterator[dict], keys: list[str], strict = True) -> Iterator[dict]:
+def slice_recs(recs: Iterator[dict], keys: list[str], strict: Optional[bool] = True) -> Iterator[dict]:
     return (slice_dict(r, keys, strict) for r in recs)
 
 
