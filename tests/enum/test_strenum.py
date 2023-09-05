@@ -24,8 +24,8 @@ def test_basics():
     a1 = Foo("a")
     a2 = Foo("a")
     print(f"a1.__class__ = {a1.__class__}")
-    print('a1',describe(a1))
-    print('a2',describe(a1))
+    print('a1', describe(a1))
+    print('a2', describe(a1))
     assert isinstance(a1, str)
     assert id(a1) == id(a2)
     assert 'a' in Foo
@@ -35,7 +35,7 @@ def test_basics():
 def test_outside():
     Goo = StrEnum("Goo", list("abcde")) 
     with pytest.raises(ValueError):
-        x = Goo('x')
+        Goo("x")
 
 
 def main():

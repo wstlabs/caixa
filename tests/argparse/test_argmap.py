@@ -1,4 +1,3 @@
-import caixa.argparse 
 from caixa.argparse import ArgSpec 
 
 T = {}
@@ -26,7 +25,7 @@ def test_argmap():
         print("..")
         print(f"{label}: {spec}")
         command = spec['cmd'].split(" ")
-        rawspec = {k:spec[k] for k in ('mono','pair')}
+        rawspec = {k: spec[k] for k in ('mono', 'pair')}
         argspec = ArgSpec(rawspec)
         print(f"{label}: rawcmd = |{spec['cmd']}|")
         print(f"{label}: argspec = {argspec}")
