@@ -133,5 +133,5 @@ class StrEnum(type):
         pass
 
     def __iter__(self):
-         return _enumerate(self)
+        return _enumerate(self)
 
