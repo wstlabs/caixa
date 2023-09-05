@@ -118,15 +118,15 @@ class XDir:
         path = self.fullpath(subpath)
         return os.path.lexists(path)
 
-    def is_dir(self, subpath : str) -> bool:
+    def is_dir(self, subpath: str) -> bool:
         path = self.fullpath(subpath)
         return os.path.isdir(path)
 
-    def is_file(self, subpath : str) -> bool:
+    def is_file(self, subpath: str) -> bool:
         path = self.fullpath(subpath)
         return os.path.isfile(path)
 
-    def is_link(self, subpath : str) -> bool:
+    def is_link(self, subpath: str) -> bool:
         path = self.fullpath(subpath)
         return os.path.islink(path)
 
@@ -166,7 +166,7 @@ class XDir:
                 yield ItemAttr(offset, subpath)
 
     def item_path(self, label: str, ext: str, position: int) -> str:
-        if position not in range (0, 1000000):
+        if position not in range(0, 1000000):
             raise ValueError(f"invalid position '{position}'")
         fmtpos = "%.6d" % position
         return f"{label}-{fmtpos}.{ext}"
