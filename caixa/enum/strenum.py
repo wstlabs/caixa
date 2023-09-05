@@ -20,7 +20,7 @@ pattern").
 """
 
 REG: dict[type, dict] = {}
-def _register(cls: type, tags: List[str]) -> None:
+def _register(cls: type, tags: list[str]) -> None:
     if cls in REG:
         raise ValueError(f"invalid usage - StrEnum class '{cls}' already registered") 
     REG[cls] = {'index': {}, 'memo': {}}
@@ -83,7 +83,7 @@ def strenum_value(self) -> str:
 A ready-made dict of attributes for providing class instances.
 This ends up being copied and passed along in StrEnum.__new__ 
 """
-ATTRS: Dict[str, Any] = {}
+ATTRS: dict[str, Any] = {}
 ATTRS['__new__'] = strenum_instance
 ATTRS['position'] = strenum_position
 ATTRS['value'] = strenum_value
@@ -119,7 +119,7 @@ class StrEnum(type):
       That's because we allow arbitrary strings as elements (which in general are not 
       necessarily valid python identifiers, hence not permitted as attributes).
     - So as a result, elements are referenced only via the constructor."""
-    def __new__(mcls, name: str, tags: List[str], attrs: dict = None):
+    def __new__(mcls, name: str, tags: list[str], attrs: dict = None):
         if name.startswith('None'):
             return None
         bases = (str,)
