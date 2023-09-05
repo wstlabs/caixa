@@ -24,7 +24,7 @@ delta = doowoop("bwah!")
 print(f"bare=True: got nothing in {delta} sec")
 
 
-@timed() # defaults to bare=False
+@timed()  # defaults to bare=False
 def woohoo(string: str) -> int:
     delay = random.random() * .4
     time.sleep(delay)
