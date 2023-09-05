@@ -79,7 +79,6 @@ def strenum_value(self) -> str:
     return str(self)
 
 
-
 """
 A ready-made dict of attributes for providing class instances.
 This ends up being copied and passed along in StrEnum.__new__ 
@@ -88,7 +87,6 @@ ATTRS: Dict[str,Any] = {}
 ATTRS['__new__'] = strenum_instance
 ATTRS['position'] = strenum_position
 ATTRS['value'] = strenum_value
-
 
 class StrEnum(type):
     """The factory class, class StrEnum, analogous to enum.IntEnum.

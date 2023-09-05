@@ -84,7 +84,6 @@ class XDir:
             lcname = self.name.lower()
             raise RuntimeError(f"invalid usage - {lcname} inactive")
 
-
     def walk(self, **kwargs) -> Iterator[tuple]:
         top = self.path
         if os.path.isdir(top):
@@ -172,7 +171,6 @@ class XDir:
         fmtpos = "%.6d" % position
         return f"{label}-{fmtpos}.{ext}"
 
-
     #
     # The next 3 methods are basically congruent (up to the slurp method).
     #
@@ -235,7 +233,6 @@ class XDir:
     #
     # Block-oriented pickling
     #
-
 
     def block_path(self, label: str, position: int) -> str:
         return self.item_path(label, 'pickle', position)

@@ -43,8 +43,6 @@ def is_delim(string: str, separator: str) -> bool:
     pat = re.compile(f"^([^\s{qsep}]+{qsep})+([^\s{qsep}]+)$")
     return bool(pat.match(string))
 
-
-
 def is_blank(s: str) -> bool:
     """
     Returns True if the string consists of one or more whitespace characters, False otherwise. 
@@ -56,7 +54,6 @@ def has_ltws(s: str) -> bool:
     Returns True if the string consists leading or trailing whitespace characters, False otherwise. 
     """
     return PATBOOK.is_match('has-whitespace-left', s) or PATBOOK.is_match('has-whitespace-right', s)
-
 
 def is_empty(s: str) -> bool:
     """
@@ -82,7 +79,6 @@ def is_integer_like(s: str) -> bool:
 
 def is_alphanumeric(s: str) -> bool:
     return PATBOOK.is_match('is-alphanumeric', s)
-
 
 def has_upper(s: str) -> bool:
     """
@@ -119,7 +115,6 @@ def has_non(function: Callable) -> Callable:
         raise ValueError("invalid input - not a string")
     return wrapped
 
-
 def basic_shape(string: str) -> str:
     """
     Looks at a string and tries to determine it's basic "shape" for downstream processing.
@@ -144,8 +139,6 @@ def basic_shape(string: str) -> str:
 _wordpat = re.compile('\S+')
 def extract_words(string: str) -> Iterator[str]: 
     yield from _wordpat.findall(string) 
-
-
 
 def find_occurrence(string: str, sub: str, position: int, start: Optional[int] = None, end: Optional[int] = None) -> int:
     """

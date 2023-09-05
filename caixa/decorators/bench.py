@@ -7,7 +7,6 @@ Provides decorators for creating easy wrappers to measure the execution time of 
 """ 
 
 
-
 #
 # We start with argless versions of the dual-purpose `timed`, which can also be imported
 # if people like their signatures better.

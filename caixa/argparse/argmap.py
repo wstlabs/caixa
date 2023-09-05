@@ -7,19 +7,19 @@ from ..util.string import find_not
 Provides the class ArgMap, which deals with a somewhat obscure situation in argument
 parsing that I have run into more than once.
 
-It concerns the case when you have one tool somehow embedded in the other, and you'd like 
-separate their argument sequences (with a reasonable degree of assurance) such that the 
+It concerns the case when you have one tool somehow embedded in the other, and you'd like
+separate their argument sequences (with a reasonable degree of assurance) such that the
 parsing of these sequences can be done independently.
 
-As an example, say you have tools `foo` and `bar`, and for your use case you will have 
+As an example, say you have tools `foo` and `bar`, and for your use case you will have
 their sequences catenated at the command like, like this:
 
     foo <foo-args> bar <bar-args>
 
 The class ArgMap provides a static method that finds the appropriate spot in the argument 
 sequence at which to partition between the two calling signatures.  It returns this value 
-inside an object of class ArgSpec, which also stores an error string in case it was unable 
-to parse.  If it is unable to parse, it sets the index value to -1 (in accord with the  
+inside an object of class ArgSpec, which also stores an error string in case it was unable
+to parse.  If it is unable to parse, it sets the index value to -1 (in accord with the
 pattern for many common utilities that find certain patterns in strings and sequences).
 
 Sample usage goes like this:
@@ -28,8 +28,8 @@ Sample usage goes like this:
     >> argspec.index
     3
 
-We get the value 3 corresponding to the fact that the `foo` argument eats up the first 3 terms 
-in the argument sequence (including the command `foo` itself).  The `resolve` method will do its 
+We get the value 3 corresponding to the fact that the `foo` argument eats up the first 3 terms
+in the argument sequence (including the command `foo` itself).  The `resolve` method will do its
 best to make sense of different presentations of keyword-value pairs (which can appear with or
 without the equal sign).  So if we feed the sequence:
 
@@ -37,10 +37,8 @@ without the equal sign).  So if we feed the sequence:
     >> argpec.index
     4
 
-It now splits at position 4.  
+It now splits at position 4.
 """
-
-
 
 
 @dataclass
