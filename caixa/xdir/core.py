@@ -2,7 +2,7 @@ import os
 import re
 import pickle
 from dataclasses import dataclass
-from typing import List, Iterator, Optional, Any
+from typing import Iterator, Optional, Any
 import ioany
 
 @dataclass
@@ -92,19 +92,19 @@ class XDir:
         else:
             raise RuntimeError(f"cannot traverse - toplevel path '{top}' not a directory")
 
-    def get_dirs(self, sort: bool = True) -> List[str]:
+    def get_dirs(self, sort: bool = True) -> list[str]:
         root, dirs, files = next(self.walk())
         if sort:
             dirs = sorted(dirs)
         return dirs
 
-    def get_files(self, sort: bool = True) -> List[str]:
+    def get_files(self, sort: bool = True) -> list[str]:
         root, dirs, files = next(self.walk())
         if sort:
             files = sorted(files)
         return files
 
-    def get_all(self) -> List[str]:
+    def get_all(self) -> list[str]:
         root, dirs, files = next(self.walk())
         return dirs + files
 
@@ -204,17 +204,17 @@ class XDir:
         path = self.fullpath(subpath)
         return ioany.save_recs(path, stream)
 
-    def slurp_csv(self, subpath: str) -> List[dict]:
+    def slurp_csv(self, subpath: str) -> list[dict]:
         path = self.fullpath(subpath)
         if self.exists(path):
             return ioany.slurp_csv(path)
         raise ValueError(f"can't find CSV file at path = '{path}'")
 
-    def save_lines(self, subpath: str, lines: List[str], encoding: str = 'utf-8'):
+    def save_lines(self, subpath: str, lines: list[str], encoding: str = 'utf-8'):
         path = self.fullpath(subpath)
         return ioany.save_lines(path, lines, encoding)
 
-    def load_lines(self, subpath: str, encoding: str = 'utf-8') -> List[str]:
+    def load_lines(self, subpath: str, encoding: str = 'utf-8') -> list[str]:
         path = self.fullpath(subpath)
         return ioany.load_lines(path, encoding)
 

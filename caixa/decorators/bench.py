@@ -1,6 +1,6 @@
 import time
 from functools import wraps
-from typing import Tuple, Callable, Any
+from typing import Callable, Any
 
 """
 Provides decorators for creating easy wrappers to measure the execution time of an input function. 
@@ -47,7 +47,7 @@ def timed_with_return(func: Callable) -> Callable:
         print(f"Got {thing} in {delta} sec.")
     """
     @wraps(func)
-    def called(*args, **kwargs) -> Tuple[float,Any]: 
+    def called(*args, **kwargs) -> tuple[float,Any]: 
         t0 = time.time()
         x = func(*args, **kwargs)
         delta = time.time() - t0

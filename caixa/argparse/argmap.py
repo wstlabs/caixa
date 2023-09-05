@@ -1,6 +1,6 @@
 from copy import deepcopy
 from dataclasses import dataclass
-from typing import Dict, Optional
+from typing import Optional
 from ..util.string import find_not
 
 """
@@ -46,11 +46,11 @@ It now splits at position 4.
 @dataclass
 class ArgMap:
     """A simple container object for the output of ArgSpec.resolve(), representing the finished parse state."""
-    argv: List[str]
+    argv: list[str]
     index: int 
     failmsg: Optional[str]
 
-    def segment(self, position: int) -> List[str]:
+    def segment(self, position: int) -> list[str]:
         """Assuming that this instance represents a successful parse state, returns the first or second of derived segments, 
         depending on whether the given :position has the value 0 or 1, respectively.  If the instance represents a failed
         parse state (taht is failmsg is None or index < 0), or and invalid :position is passed, an exception is raised."""
@@ -65,7 +65,7 @@ class ArgMap:
 
 class ArgSpec:
 
-    def __init__(self, rawspec: Dict[str,Optional[str]]) -> None: 
+    def __init__(self, rawspec: dict[str,Optional[str]]) -> None: 
         assert_valid_rawspec(rawspec)
         self._raw = deepcopy(rawspec)
         self._val = rawspec2valence(self._raw)
@@ -85,7 +85,7 @@ class ArgSpec:
     def valence(self, keyword: str) -> Optional[int]:
         return self._val.get(keyword)
 
-    def resolve(self, argv: List[str]) -> ArgMap: 
+    def resolve(self, argv: list[str]) -> ArgMap: 
         _argv = deepcopy(argv)
         index: int = 0
         # print(f"resolve: argv = {_argv}")
@@ -129,7 +129,7 @@ def assert_valid_rawspec_label(label: str) -> None:
        raise ValueError(f"invalid rawspec label '{label}'")
 
 
-def assert_valid_rawspec(rawspec: Dict[str,str]) -> None:
+def assert_valid_rawspec(rawspec: dict[str,str]) -> None:
     for k in rawspec.keys():
         assert_valid_rawspec_label(k)
 
@@ -169,15 +169,15 @@ def parse_kwarg_term(term: str) -> KwargSpec:
         return KwargSpec(keyword=None, value=None, failmsg="too many equal signs") 
 
 
-def rawspec2valence(rawspec: Dict[str,str]) -> Dict[str,int]:
-    _val: Dict[str,int] = {}
+def rawspec2valence(rawspec: dict[str,str]) -> dict[str,int]:
+    _val: dict[str,int] = {}
     label: str
     terms: str
     for (label,terms) in rawspec.items():
         if label not in ('mono','pair'):
             raise ValueError(f"invalid rawspec - bad label '{label}'")
         _valence: int = label2valence(label)
-        _terms: List[str] = [t for t in terms.split(',') if len(t)]
+        _terms: list[str] = [t for t in terms.split(',') if len(t)]
         for term in _terms:
             if term in _val:
                 raise ValueError(f"invalid term list for label '{label}' - duplicate instance of term '{term}'")

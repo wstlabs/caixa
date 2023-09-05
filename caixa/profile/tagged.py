@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import Dict, Tuple, Iterator, Callable, Any, Optional
+from typing import Iterator, Callable, Any, Optional
 from dataclasses import dataclass
 
 """
@@ -38,10 +38,10 @@ class TaggedProfilerSummary:
 class TaggedProfiler:
     """A useful tag-based profiler class which we'll describe when we have more time."""
 
-    def __init__(self, tagmap: Dict[str,Callable]):
+    def __init__(self, tagmap: dict[str,Callable]):
         self.tagmap = tagmap
 
-    def eval_dict(self, r: dict) -> Iterator[Tuple[str,str,str]]:
+    def eval_dict(self, r: dict) -> Iterator[tuple[str,str,str]]:
         for (tag, f) in self.tagmap.items(): 
             for (k, v) in r.items():
                 if f(v):
@@ -58,15 +58,15 @@ class TaggedProfiler:
         # We use underscores for all "recording" structures.
         # Non-nunderscore names for input variables and flags.
         labels = list(self.tagmap.keys())
-        temp_cache: Dict[int,Any] = {}
-        temp_index: Dict[str,Any] = {k:defaultdict(int) for k in labels}
+        temp_cache: dict[int,Any] = {}
+        temp_index: dict[str,Any] = {k:defaultdict(int) for k in labels}
         for status in self.evaluate(recs, deep): 
             temp_cache[status.offset] = status.r if deep else 1
             temp_index[status.tag][status.offset] += 1
         _total = len(temp_cache)
-        _histo: Dict[str,int] = {k:len(v) for (k,v) in temp_index.items()}
-        _index: Optional[Dict[str,list]] = None
-        _cache: Optional[Dict[int,Any]] = None
+        _histo: dict[str,int] = {k:len(v) for (k,v) in temp_index.items()}
+        _index: Optional[dict[str,list]] = None
+        _cache: Optional[dict[int,Any]] = None
         if temp_index:
             _index = {k:list(v.keys()) for k,v in temp_index.items()}
         if deep: 

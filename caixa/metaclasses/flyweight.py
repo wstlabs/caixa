@@ -1,6 +1,6 @@
-from typing import Dict, Any
+from typing import Any
 
-REG: Dict[type,Dict[tuple,Any]] = {}
+REG: dict[type, dict[tuple,Any]] = {}
 class Flyweight(type):
     """A simple flyweight mixin that works in the narrow use case in which the constructor is 
     called with positional arguments only.  That is, it memoizes only on the list of `args` passed, 

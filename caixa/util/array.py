@@ -1,6 +1,6 @@
-from typing import List, Any, Optional
+from typing import Any, Optional
 
-def croplist(array: List[Any], depth: int = 3, maxlen: Optional[int] = None) -> str:
+def croplist(array: list[Any], depth: int = 3, maxlen: Optional[int] = None) -> str:
     """
     Returns an "edge-cropped" string representation of the given list :array with 
     the aim of giving you a quick portrait of the array's contents.  It assumes the

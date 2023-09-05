@@ -28,7 +28,7 @@ from caixa.options import resolve_options
 DEFAULTOPTIONS = {'allow-snorkeling': True, 'rescue-after': 10} 
 
     # then somewhere in a module or class
-    def rescue_person(self, instructor: str, options: Dict[str,any]): 
+    def rescue_person(self, instructor: str, options: dict[str,any]): 
         niceopts = resolve_options(DEFAULTOPTIONS, options)
 ```
 
@@ -38,7 +38,7 @@ TODO: enforce type compliance on values.
 """
 
 from copy import deepcopy
-from typing import Dict, Any
+from typing import Any
 
 def update_strict(targetdict: dict, otherdict: dict, forcedeep: bool = True) -> None: 
 
@@ -60,7 +60,7 @@ def assert_valid_option_key(k: str) -> None:
     if len(k) == 0:
         raise ValueError(f"invalid option key '{k}' - cannot be the empty string") 
 
-def resolve_options(default_options: Dict[str,Any], update_options: Dict[str,Any]) -> Dict[str,Any]:
+def resolve_options(default_options: dict[str,Any], update_options: dict[str,Any]) -> dict[str,Any]:
     """
     Returns a new options dict, with the :default_options and :update_options dicts safely merged.
     """

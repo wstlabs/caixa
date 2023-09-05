@@ -1,6 +1,6 @@
-from typing import List, Tuple, Dict, Iterator, Any
+from typing import Iterator, Any
 
-def slice_dict(r: dict, keys: List[str], strict = True) -> dict: 
+def slice_dict(r: dict, keys: list[str], strict = True) -> dict: 
     d = {}
     for k in keys:
         if strict and k not in r:
@@ -8,7 +8,7 @@ def slice_dict(r: dict, keys: List[str], strict = True) -> dict:
         d[k] = r.get(k)
     return d
 
-def slice_recs(recs: Iterator[dict], keys: List[str], strict = True) -> Iterator[dict]:
+def slice_recs(recs: Iterator[dict], keys: list[str], strict = True) -> Iterator[dict]:
     return (slice_dict(r, keys, strict) for r in recs)
 
 
@@ -24,11 +24,11 @@ def _any2str(x: Any) -> str:
         return "'" + str(x) + "'" 
     return str(x)
 
-def _kv2str(pair: Tuple[str, Any]) -> str:
+def _kv2str(pair: tuple[str, Any]) -> str:
     key, value = pair
     return f"{key}={_any2str(value)}"
 
-def dict2argterms(d: Dict[str, Any]) -> Iterator[str]:
+def dict2argterms(d: dict[str, Any]) -> Iterator[str]:
     """Given a dict, yields a sequence of properly stringified key-value terms that are 
     believed to be compatible with the usual presentation of kwarg dicts as strings.
     Can also be used for "pretty" representations of dicts in other contexts.
@@ -43,7 +43,7 @@ def dict2argterms(d: Dict[str, Any]) -> Iterator[str]:
     If not then you'll get garbage output."""
     return (_kv2str(kv) for kv in d.items())
 
-def dict2pretty(d: Dict[str, Any]) -> str: 
+def dict2pretty(d: dict[str, Any]) -> str: 
     """Returns a "pretty" representation of a dict, believed to be compatible with the
     usual presentation of kwarg dicts.  For example:
 

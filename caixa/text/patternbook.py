@@ -1,10 +1,10 @@
 import re
-from typing import Dict, Optional
+from typing import dict, Optional
 
 
 class PatternBook: 
    
-    def __init__(self, lookup: Dict[str,re.Pattern]):
+    def __init__(self, lookup: dict[str,re.Pattern]):
         self.lookup = lookup
 
     # def match(self, name: str, string: str, pos: int = None, endpos: int = None) -> re.Match:

@@ -1,7 +1,7 @@
 """
 Provides the factory class StrEnum, analogous to enum.IntEnum.
 See the docstring to the StrEnum class for details."""
-from typing import Type, List, Dict, Iterator, Any
+from typing import type, Iterator, Any
 
 def dump(item: Any, label: str = 'item'):
     print(f"{label} = {item}, type(item) = {type(item)}, id = {id(item)}")
@@ -19,8 +19,8 @@ appropriate elements in the classes dunder-dicts (which is sometimes called the 
 pattern").
 """
 
-REG: Dict[Type,dict] = {}
-def _register(cls: Type, tags: List[str]) -> None:
+REG: Dict[type,dict] = {}
+def _register(cls: type, tags: List[str]) -> None:
     if cls in REG:
         raise ValueError(f"invalid usage - StrEnum class '{cls}' already registered") 
     REG[cls] = {'index':{}, 'memo':{}}
@@ -32,7 +32,7 @@ def _register(cls: Type, tags: List[str]) -> None:
             raise ValueError(f"cannot build - duplicate tag='{tag}' found at position={pos}")
         REG[cls]['index'][str(tag)] = pos
 
-def _enumerate(cls: Type) -> Iterator[Any]:
+def _enumerate(cls: type) -> Iterator[Any]:
     if cls not in REG:
         raise ValueError(f"invalid usage - StrEnum class '{cls}' not yet registered") 
     for tag in REG[cls]['index']:

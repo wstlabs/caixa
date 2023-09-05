@@ -1,7 +1,6 @@
 from zlib import crc32
-from typing import Tuple
 
-def pairwise_crc32(filepath1: str, filepath2: str) -> Tuple[int, int]:
+def pairwise_crc32(filepath1: str, filepath2: str) -> tuple[int, int]:
     """Given two file paths, we return the CRC32 checksums on each."""
     with open(filepath1, "rb") as f1, open(filepath2, "rb") as f2:
         bytes1 = f1.read()

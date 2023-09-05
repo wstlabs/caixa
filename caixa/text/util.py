@@ -1,5 +1,5 @@
 import re
-from typing import Iterator, Tuple, Callable, Optional
+from typing import Iterator, tuple, Callable, Optional
 from .patternbook import PatternBook
 
 """
@@ -167,7 +167,7 @@ def find_occurrence(string: str, sub: str, position: int, start: Optional[int] =
     # Theoretically we should never get here, but if we do ...
     raise RuntimeError("invalid state") 
 
-def find_line_occurrence(text: str, position: int, separator: str = "\n") -> Optional[Tuple[int,int]]:
+def find_line_occurrence(text: str, position: int, separator: str = "\n") -> Optional[tuple[int,int]]:
     if position < 0:
         raise ValueError("invalid usage - position must be > 0") 
     if position == 0:
