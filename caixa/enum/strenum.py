@@ -25,7 +25,7 @@ def _register(cls: type, tags: list[str]) -> None:
         raise ValueError(f"invalid usage - StrEnum class '{cls}' already registered") 
     REG[cls] = {'index': {}, 'memo': {}}
     for (i, tag) in enumerate(tags):
-        pos = i+1
+        pos = i + 1
         if not isinstance(tag, str):
             raise ValueError(f"cannot build - expected string instance at position={pos}, got {type(tag)}")
         if tag in REG[cls]['index']:

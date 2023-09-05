@@ -160,8 +160,8 @@ def parse_kwarg_term(term: str) -> KwargSpec:
     index = term.find('=')
     if index < 0:
         return KwargSpec(keyword=term, value=None, failmsg=None)
-    elif term.find('=', index+1) < 0:
-        return KwargSpec(keyword=term[:index], value=term[index+1:], failmsg=None)
+    elif term.find('=', index + 1) < 0:
+        return KwargSpec(keyword=term[:index], value=term[index + 1:], failmsg=None)
     else:
         return KwargSpec(keyword=None, value=None, failmsg="too many equal signs") 
 
