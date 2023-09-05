@@ -21,13 +21,13 @@ class ArgumentParser(argparse.ArgumentParser):
         super(ArgumentParser, self).__init__(*args, **kwargs)
         self._message: Optional[str] = None
 
-    def error(self, message: str): # -> None
+    def error(self, message: str):  # -> None
         """Overrides the standard `error` method to assign the given :message to the 
         member `_message` of the parser instance.  In theory this will allow for fully
         customizable error handling."""
         self._message = message
 
-    def parse_args(self, args=None, namespace=None): # -> argparse.Namespace
+    def parse_args(self, args=None, namespace=None):  # -> argparse.Namespace
         """Overrides the standard `parse_args` method to re-route any parsing errors to
         a new `_message` member of the `argparse.Namespace` object, which is now always
         returned."""

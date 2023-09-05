@@ -132,7 +132,7 @@ def basic_shape(string: str) -> str:
         return 'multiword'
     if is_delim(string, '-'):
         return 'dashy'
-    if '-' in string: # contains '--' or leading/trailing '-'
+    if '-' in string:  # contains '--' or leading/trailing '-'
         return 'malformed'
     return 'plain'
 
