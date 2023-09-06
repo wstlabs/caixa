@@ -54,12 +54,6 @@ def strenum_instance(cls, tag: str):
     if tag not in REG[cls]['memo']:
         REG[cls]['memo'][tag] = str.__new__(cls, tag)
     return REG[cls]['memo'][tag]
-    # print(f"strenum_instance: cls = {cls}")
-    # print(f"strenum_instance: type(cls) = {type(cls)}")
-    # print(f"strenum_instance: tag = %r" % tag)
-    # nifty = str.__new__(cls, tag)
-    # dump(nifty,'nifty')
-    # REG[cls]['memo'][tag] = nifty 
 
 def strenum_position(self) -> None:
     """Given a string :tag, returns an integer representing its position (or index) in the sequence 
@@ -71,9 +65,6 @@ def strenum_position(self) -> None:
     if position is None:
         raise RuntimeError("invalid state - no index record for tag='{tag}', cls={cls}") 
     return position
-    # print(f"strenum_position id = {id(self)}")
-    # print(f"strenum_position self = {self} of type={type(self)}")
-    # print(f"strenum_position tag = '{tag}' of type={type(tag)}")
 
 def strenum_value(self) -> str:
     return str(self)

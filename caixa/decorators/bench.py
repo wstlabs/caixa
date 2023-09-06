@@ -6,11 +6,8 @@ from typing import Callable, Any
 Provides decorators for creating easy wrappers to measure the execution time of an input function. 
 """ 
 
-
-#
 # We start with argless versions of the dual-purpose `timed`, which can also be imported
 # if people like their signatures better.
-#
 
 def timed_without_return(func: Callable) -> Callable:
     """
@@ -96,7 +93,6 @@ def timed(bare: bool = False) -> Callable:
     When run dynamically it will get confused about what it's being called on, which will trigger 
     a TypeError in the calling context. 
     """
-
     if bare:
         return timed_without_return
     else:

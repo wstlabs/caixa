@@ -4,8 +4,8 @@ def croplist(array: list[Any], depth: int = 3, maxlen: Optional[int] = None) -> 
     """
     Returns an "edge-cropped" string representation of the given list :array with 
     the aim of giving you a quick portrait of the array's contents.  It assumes the
-    use case of a very long list which would otherwise be too long to  
-    display on a single line.
+    use case of a very long list which would otherwise be too long to display on 
+    a single line.
 
     For example, the list representing the set of primes between 100k and 110k
     (which has 1095 elements) would be presented like this:

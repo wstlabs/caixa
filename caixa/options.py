@@ -1,5 +1,4 @@
-"""
-Helper functins for painless option parsing.
+"""Helper functins for painless option parsing.
 
 The key to keeping "options" management simple lies in recognizing that differs (crucially) from "configuration" management:
 
@@ -41,8 +40,8 @@ from copy import deepcopy
 from typing import Any
 
 def update_strict(targetdict: dict, otherdict: dict, forcedeep: bool = True) -> None: 
+    """Merges dicts while enforcing constraints (and deepness).
 
-    """
     Like `dict.update()` except:
       - We require that every key in the :otherdict be present in the :targetdict we are copying into
       - Only keys of type `str` (and of non-zero-length) are allowed 

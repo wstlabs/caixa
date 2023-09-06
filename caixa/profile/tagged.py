@@ -1,11 +1,8 @@
+"""Provides the simple`TaggedProfiler` class useful for dict profiling. """
 from collections import defaultdict
 from typing import Iterator, Callable, Any, Optional
 from dataclasses import dataclass
 
-"""
-Provides the `TaggedProfiler` class related to record profiling.
-TODO: Better description needed.
-"""
 
 @dataclass
 class TaggedProfilerRecordStatus:
