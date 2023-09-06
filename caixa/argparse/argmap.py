@@ -1,7 +1,6 @@
 from copy import deepcopy
 from dataclasses import dataclass
 from typing import Optional
-from ..util.string import find_not
 
 """
 Provides the class ArgMap, which deals with a somewhat obscure situation in argument
@@ -154,7 +153,7 @@ class KwargSpec:
 
 
 def parse_kwarg_term(term: str) -> KwargSpec: 
-    index: int = find_not(term, '-')
+    index: int = _find_not(term, '-')
     if index < 1:
         return KwargSpec(keyword=None, value=None, failmsg="not dashy") 
     index = term.find('=')
@@ -180,4 +179,27 @@ def rawspec2valence(rawspec: dict[str, str]) -> dict[str, int]:
                 raise ValueError(f"invalid term list for label '{label}' - duplicate instance of term '{term}'")
             _val[term] = _valence
     return _val
+
+
+def _find_not(string: str, target: str) -> int:
+    """Analagous to `str.find` but returns the index for the first character in the
+    given string that does not match the given target character.
+
+    Args:
+       'string' - a string of any length
+       'target' - a string of length 1 (representing a single character)
+
+    Return:
+       An integer > 0 if the string contains at least one character not equal to the target
+       -1 otherwise (if the string is either empty, or is equal to repeated instances of the target character)
+    """
+    if len(target) != 1:
+        raise ValueError("invalid usage - 'target' should be string of length 1")
+    i: int
+    char: str
+    for (i, char) in enumerate(string):
+        if char != target:
+            return i
+    return -1
+
 
